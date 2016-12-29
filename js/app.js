@@ -3,16 +3,18 @@ app.controller('ContactController', ['$scope', function($scope) {
     $scope.text = "Works";
 }]);
 
-app.config(function($routeProvider){
+app.config(['$routeProvider', function($routeProvider){
     $routeProvider
-    .when("/", {
-        templateUrl : "index.html"
+    .when('/', {
+        templateUrl : "template/contact.html"
         })
-    .when("/edit", {
+    .when('/edit', {
         templateUrl: "template/edit.html"      
         })
+    .when('/contact', {
+        templateUrl: "template/contact.html"      
+        })
     .otherwise({
-    template : "contact.html"
+        redirectTo: '/'
         });
-});
-
+}]);
