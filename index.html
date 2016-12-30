@@ -3,20 +3,38 @@
     <head>
         <meta charset="UTF-8">
         <title>Document</title>
+        <link rel="stylesheet" href="https://unpkg.com/purecss@0.6.1/build/pure-min.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     <body ng-app="app" ng-controller="ContactController as contact">
         <h1>{{ text }}</h1>
+        <ul>
+            <li ng-repeat="contact in contacts">{{contact.phone }} _ {{contact.name}}
+               <input ng-model="contact.name" ng-change="contacts.$save(contact)" /> 
+                <button ng-click="contacts.$remove(contact)">Del</button>
+            </li>
+        </ul>
 
-    <ul class="nav navbar-nav">
+        <form name="name" ng-submit="addContact()" novalidate>
+            <input type="email" id="email" ng-model="email">
+            <input type="text" ng-model="named" placeholder="Nombre.." >
+            <input type="number" id="phone" ng-model="phone">
+            <button type="submit" class="pure-button">Guardar</button>
+        </form>
+        <ul id="contacts"></ul>
+        <ul class="nav navbar-nav">
             <li class="active"><a href="#/">listado</a></li>
-            <li><a href="#/edit">Edit</a></li>
+            <li><a href="#/new">Nuevo</a></li>
             <li><a href="#/contact">Detalles</a></li>
         </ul>
         <div ng-view></div>   
-
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular-route.min.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/3.6.4/firebase.js"></script>
+        <script src="https://cdn.firebase.com/libs/angularfire/2.2.0/angularfire.min.js"></script>
         <script src="js/app.js" ></script>
-        <script src="js/config.js"></script>        
+        <script src="js/config.js"></script>
+ 
     </body>
 </html>

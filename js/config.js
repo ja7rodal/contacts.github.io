@@ -3,8 +3,8 @@ app.config(function($routeProvider){
         .when('/', {
         templateUrl: "partial/list.html"
     })
-        .when('/edit', {
-        templateUrl: "partial/editContact.html"      
+        .when('/new', {
+        templateUrl: "partial/newContact.html"      
     })
         .when('/contact', {
         templateUrl: "partial/showContact.html"      
