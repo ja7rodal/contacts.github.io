@@ -13,6 +13,7 @@ app.controller('ContactController', ['$scope', '$firebaseArray', function($scope
     var ref = firebase.database().ref("contacts");
     // create a synchronized array
     $scope.contacts = $firebaseArray(ref);
+    console.info($scope.contacts);
     // add new items to the array
     // the message is automatically added to our Firebase database!
     $scope.addContact = function() {
