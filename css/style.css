@@ -1,3 +1,7 @@
+body {
+	color: darkmagenta;
+}
+
 .content{
 	margin-left: auto;
 	margin-right: auto;
@@ -5,7 +9,6 @@
 }
 
 .title{
-	color: darkmagenta;
 	border-bottom: solid green 3px;
 }
 
@@ -24,4 +27,35 @@
 	padding: 5px 10px;
 	border-radius: 10%;
 	box-shadow: 5px 5px 5px #888888;
+}
+
+.contact{
+	padding: 0px !important;
+}
+
+
+table {
+	width: 100%;
+}
+
+.name{
+	margin: 2% 5% 0% 3%;
+}
+ 
+.mail, .ph{
+	margin: 1% 2% 2% 10%;
+	color: dimgray;
+}
+tr:hover{
+	background-color: rgba(139,0,139,0.8);
+	color: aliceblue;
+	-ms-transform: scale(1.2,1.2);
+	-webkit-transform: scale(1.2,1.2);
+	transform: scale(1.2,1.2);
+	box-shadow: 5px 5px 5px #888888;
+}
+
+
+td:hover div span{
+	color:  antiquewhite;
 }

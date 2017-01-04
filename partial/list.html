@@ -1,10 +1,20 @@
 <h1 class="title">Contact List</h1>
 <div class="nuevo"><a href="#/new">Nuevo Contacto <i class="fa fa-plus" aria-hidden="true"></i></a></div>
 <div class="list">
-	<div class="contact" ng-repeat="contact in contacts">{{contact.phone }} _ {{contact.name}}
-		<input ng-model="contact.name" ng-change="contacts.$save(contact)" /> 
-		<button ng-click="contacts.$remove(contact)">Del</button>
-	</div>
+	<table class="pure-table pure-table-bordered">
+		<tbody>
+			<tr ng-repeat="contact in contacts">
+				<td class="contact">
+					<h3 class="name">{{contact.name }}</h3>
+					<div class= "mail">
+						<span class=""><i class="fa fa-phone" aria-hidden="true"></i> {{contact.phone}}</span>
+						<span class="ph"><i class="fa fa-envelope" aria-hidden="true"></i> {{contact.email}}</span>
+
+					</div>
+				</td>
+			</tr>
+		</tbody>
+	</table>
 </div>
 
 
