@@ -1,0 +1,27 @@
+.content{
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 30px;
+}
+
+.title{
+	color: darkmagenta;
+	border-bottom: solid green 3px;
+}
+
+.nuevo{
+
+	margin: 0px;
+	margin-bottom: 30px;
+	padding: 0px;
+	text-align: right;
+}
+
+.nuevo a{
+	text-decoration: none;
+	background-color: darkmagenta;
+	color: white;
+	padding: 5px 10px;
+	border-radius: 10%;
+	box-shadow: 5px 5px 5px #888888;
+}
