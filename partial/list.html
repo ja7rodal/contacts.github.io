@@ -3,7 +3,7 @@
 <div class="list">
 	<table class="pure-table pure-table-bordered">
 		<tbody>
-			<tr ng-repeat="contact in contacts">
+			<tr ng-repeat="contact in contacts" ng-click="link_contact(contact.$id)">
 				<td class="contact">
 					<h3 class="name">{{contact.name }}</h3>
 					<div class= "mail">

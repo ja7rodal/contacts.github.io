@@ -8,3 +8,7 @@ var config = {
 firebase.initializeApp(config);
 
 var app = angular.module('app', ['ngRoute', 'firebase']);
+
+app.factory('factoryApp', function(){
+	return {};
+});
