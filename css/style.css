@@ -41,7 +41,7 @@ table {
 .name{
 	margin: 2% 5% 0% 3%;
 }
- 
+
 .mail, .ph{
 	margin: 1% 2% 2% 10%;
 	color: dimgray;
@@ -59,3 +59,17 @@ tr:hover{
 td:hover div span{
 	color:  aliceblue;
 }
+
+.button{
+	text-align: center;
+	margin-top: 20px;
+}
+
+.button-primary {
+	color: aliceblue;
+	border-radius: 4px;
+	text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+	background: darkmagenta; /* this is a green */
+	font-weight: bolder;
+}
+

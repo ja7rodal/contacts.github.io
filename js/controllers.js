@@ -1,5 +1,5 @@
 angular.module('app').controller('ContactController', ['$scope', '$location', '$firebaseArray', function ($scope, $location, $firebaseArray) {
-	var ref = firebase.database().ref("contacts");
+	var ref = firebase.database().ref("contacts").orderByChild("name");
 	// create a synchronized array
 	$scope.contacts = $firebaseArray(ref);
 	//console.info($scope.contacts);
