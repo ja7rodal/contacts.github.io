@@ -1,14 +1,12 @@
-angular.module('app').controller('ContactController', ['$scope', '$location', '$firebaseArray', '$routeParams', function ($scope, $location, $firebaseArray, $routeParams) {
-	$scope.text = "Works";
+angular.module('app').controller('ContactController', ['$scope', '$location', '$firebaseArray', function ($scope, $location, $firebaseArray) {
 	var ref = firebase.database().ref("contacts");
 	// create a synchronized array
 	$scope.contacts = $firebaseArray(ref);
-	console.info($scope.contacts);
+	//console.info($scope.contacts);
 	
 	//Link to contact
-	$scope.id = $routeParams.id;
 	$scope.link_contact = function(location){
-		$location.path('/contact:'+location);
+		$location.path('/contact/'+location);
 		
 	};
 	
@@ -29,4 +27,20 @@ angular.module('app').controller('ContactController', ['$scope', '$location', '$
 		alert('nuevo contact');
 		$location.path('/');
 	};
+}]);
+
+angular.module('app').controller('showController', ['$scope', '$firebaseArray', '$location', '$routeParams', function ($scope, $firebaseArray, $location, $routeParams) {
+	
+	var id = $routeParams.id;
+	$scope.id =  id;
+	var refe = firebase.database().ref("contacts");
+	// create a synchronized array
+	var contacts = $firebaseArray(refe);
+	
+	contacts.$loaded()
+    .then(function (contacts) 
+    {  
+			$scope.contact = contacts.$getRecord(id); 
+    });
+	
 }]);

@@ -8,9 +8,9 @@ app.config(function($routeProvider){
         templateUrl: "partial/newContact.html",
 				controller: "ContactController"
     })
-        .when('/contact:id', {
+        .when('/contact/:id', {
         templateUrl: "partial/showContact.html",
-				controller: "ContactController"
+				controller: "showController"
     })
         .otherwise({
         redirectTo: '/'

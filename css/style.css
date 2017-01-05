@@ -51,7 +51,7 @@ tr:hover{
 	color: aliceblue;
 	-ms-transform: scale(1.2,1.2);
 	-webkit-transform: scale(1.2,1.2);
-	transform: scale(1.1,1.2);
+	transform: scale(1.1,1.1);
 	box-shadow: 7px 7px 7px #888888;
 }
 
