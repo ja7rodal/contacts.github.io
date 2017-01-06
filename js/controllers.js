@@ -1,16 +1,16 @@
 angular.module('app').controller('ContactController', ['$scope', '$location', '$firebaseArray', function ($scope, $location, $firebaseArray) {
-	var ref = firebase.database().ref("contacts").orderByChild("name");
+	var ref = firebase.database().ref("contacts").orderByChild('name');
 	// create a synchronized array
 	$scope.contacts = $firebaseArray(ref);
-	//console.info($scope.contacts);
+	// mask for phone
+	$scope.phoneMask = "+99-999-9999";
 
 	//Link to contact
 	$scope.link_contact = function(location){
-		$location.path('/contact/'+location);
-
+		$location.path('/contact/' + location);
 	};
 
-
+	$scope.notes = "";
 	// add new items to the array
 	// the message is automatically added to our Firebase database!
 	$scope.addContact = function () {

@@ -7,7 +7,7 @@ var config = {
 };
 firebase.initializeApp(config);
 
-var app = angular.module('app', ['ngRoute', 'firebase']);
+var app = angular.module('app', ['ngRoute', 'firebase', 'ui.mask']);
 
 app.factory('factoryApp', function(){
 	return {};

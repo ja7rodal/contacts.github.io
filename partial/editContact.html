@@ -9,7 +9,7 @@
 		
 		<div class="pure-control-group" ng-class="{ 'p-error': form.phone.$invalid && (form.phone.$touched || form.$submitted) }">
 			<label for="phone">Teléfono</label>	
-			<input type="number" name="phone" id="phone" ng-model="contact.phone" placeholder="Phone" required>
+			<input type="phone" name="phone" id="phone" ng-model="contact.phone" ui-mask="{{phoneMask}}" required>
 			<div ng-show="form.phone.$invalid && (form.phone.$touched || form.$submitted)">Campo necesario</div>
 		</div>
 		
