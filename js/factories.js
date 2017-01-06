@@ -19,6 +19,15 @@ angular.module('app').factory('contactFactory',['$firebaseArray', '$firebaseObje
 			return $firebaseObject(contact);
 
 		},
+		create: function (contact){
+			contacts.$add(contact).then(function(ref) {
+  		//var id = ref.key();
+			console.log("added record with id " + id);
+			//list.$indexFor(id); // returns location in the array
+			}, function(error) {
+  			console.log(error);
+				});				
+		},
 		delete: function(id){
 			var contact = $firebaseObject(ref.child(id));
 			contact.$remove().then(function(ref) {
@@ -34,6 +43,7 @@ angular.module('app').factory('contactFactory',['$firebaseArray', '$firebaseObje
   			return error;
 		  });
 		}
+		
 	};
 
 }]);
