@@ -30,16 +30,11 @@ angular.module('app').controller('ContactController', ['$scope', '$location', 'c
 
 angular.module('app').controller('showController', ['$scope', 'contactFactory', '$location', '$routeParams', function ($scope, contactFactory, $location, $routeParams) {
 
-	var id = $routeParams.id;
 	
 	var contacts = contactFactory.list();
+	$scope.contact = contactFactory.contact($routeParams.id);
+	
 	$scope.delete = function() {
-
-		contacts.$loaded()
-			.then(function (contacts) {  
-				$scope.contact = contacts.$getRecord(id); 
-				}
-			);
 
 		var d =confirm("Estas seguro de eleminar este contacto?");
 		if (d == true ){ 

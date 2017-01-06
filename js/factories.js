@@ -1,4 +1,4 @@
-angular.module('app').factory('contactFactory',['$firebaseArray', function($firebaseArray){
+angular.module('app').factory('contactFactory',['$firebaseArray', '$firebaseObject', function($firebaseArray, $firebaseObject){
 	var config = {
 		apiKey: "AIzaSyBsVzHAEPXrhcbo3qKcOqHadFEk58VhsI0",
 		authDomain: "brilliant-torch-9248.firebaseapp.com",
@@ -6,20 +6,23 @@ angular.module('app').factory('contactFactory',['$firebaseArray', function($fire
 		storageBucket: "brilliant-torch-9248.appspot.com",
 		messagingSenderId: "936020393527"
 	};
-	firebase.initializeApp(config);	
-	var ref = firebase.database().ref("contacts").orderByChild("name");
-	// create a synchronized array
+	firebase.initializeApp(config);
+	var ref = firebase.database().ref("contacts");
+
 	return {
 		list: function() {
-      return $firebaseArray(ref);
+		    return $firebaseArray(ref);
     },
 		contact: function(id){
-				$firebaseArray(ref).$loaded()
-					.then(function (contacts) {  
-						return  contacts.$getRecord(id); 
-					}
-			);
+			var contact = ref.child(id);
+			return $firebaseObject(contact);
+
 		}
 	};
 
 }]);
+
+	
+//	playersRef.orderByChild("name").equalTo("John").on("child_added", function(data) {
+//   console.log("Equal to filter: " + data.val().name);
+//});
