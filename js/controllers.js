@@ -35,18 +35,19 @@ angular.module('app').controller('showController', ['$scope', 'contactFactory', 
 	var contacts = contactFactory.list();
 	$scope.delete = function() {
 
+		contacts.$loaded()
+			.then(function (contacts) {  
+				$scope.contact = contacts.$getRecord(id); 
+				}
+			);
+
 		var d =confirm("Estas seguro de eleminar este contacto?");
 		if (d == true ){ 
 			contacts.$remove($scope.contact);
 			//contacts.$remove(id);
 			$location.path('/');
-		}};
-
-	contacts.$loaded()
-		.then(function (contacts) 
-					{  
-		$scope.contact = contacts.$getRecord(id); 
-	});
+			}
+	};
 
 }]);
 

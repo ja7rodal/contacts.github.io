@@ -7,12 +7,19 @@ angular.module('app').factory('contactFactory',['$firebaseArray', function($fire
 		messagingSenderId: "936020393527"
 	};
 	firebase.initializeApp(config);	
-	var ref = firebase.database().ref("contacts");
+	var ref = firebase.database().ref("contacts").orderByChild("name");
 	// create a synchronized array
 	return {
 		list: function() {
       return $firebaseArray(ref);
-    }	
+    },
+		contact: function(id){
+				$firebaseArray(ref).$loaded()
+					.then(function (contacts) {  
+						return  contacts.$getRecord(id); 
+					}
+			);
+		}
 	};
 
 }]);
