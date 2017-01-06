@@ -1,7 +1,7 @@
-angular.module('app').controller('ContactController', ['$scope', '$location', '$firebaseArray', function ($scope, $location, $firebaseArray) {
-	var ref = firebase.database().ref("contacts").orderByChild('name');
-	// create a synchronized array
-	$scope.contacts = $firebaseArray(ref);
+angular.module('app').controller('ContactController', ['$scope', '$location', 'contactFactory', function ($scope, $location, contactFactory) {
+	$scope.contacts = contactFactory.list();
+	
+	$scope.path = "";
 	// mask for phone
 	$scope.phoneMask = "+99-999-9999";
 
@@ -28,14 +28,11 @@ angular.module('app').controller('ContactController', ['$scope', '$location', '$
 	};
 }]);
 
-angular.module('app').controller('showController', ['$scope', '$firebaseArray', '$location', '$routeParams', function ($scope, $firebaseArray, $location, $routeParams) {
+angular.module('app').controller('showController', ['$scope', 'contactFactory', '$location', '$routeParams', function ($scope, contactFactory, $location, $routeParams) {
 
 	var id = $routeParams.id;
-	$scope.id =  id;
-	var refe = firebase.database().ref("contacts");
-	// create a synchronized array
-	var contacts = $firebaseArray(refe);
-
+	
+	var contacts = contactFactory.list();
 	$scope.delete = function() {
 
 		var d =confirm("Estas seguro de eleminar este contacto?");
@@ -54,13 +51,10 @@ angular.module('app').controller('showController', ['$scope', '$firebaseArray', 
 }]);
 
 
-angular.module('app').controller('editController', ['$scope', '$firebaseArray', '$location', '$routeParams', function ($scope, $firebaseArray, $location, $routeParams) {
+angular.module('app').controller('editController', ['$scope', 'contactFactory', '$location', '$routeParams', function ($scope, contactFactory, $location, $routeParams) {
 	var id = $routeParams.id;
-	$scope.id =  id;
-	var refe = firebase.database().ref("contacts");
-	// create a synchronized array
-	var contacts = $firebaseArray(refe);
-	$scope.contacts = contacts;
+	
+	var contacts = contactFactory.list();
 
 	contacts.$loaded()
 		.then(function (contacts) 
