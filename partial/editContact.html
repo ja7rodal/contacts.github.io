@@ -1,19 +1,22 @@
 <h1 class="title">Editar contacto</h1>
-<form class="pure-form pure-form-aligned" name="name" ng-submit="editContact()" novalidate>
+<form class="pure-form pure-form-stacked" name="form" ng-submit="form.$valid && editContact()" novalidate>
 	<fieldset>
-		<div class="pure-control-group">
+		<div class="pure-control-group" ng-class="{ 'p-error': form.named.$invalid && (form.named.$touched || form.$submitted) }">
 			<label for="named">Nombres</label>
-			<input type="text" name="named" ng-model="contact.name" placeholder="Nombre.." >
+			<input type="text" name="named" ng-model="contact.name" placeholder="Nombre.." required >
+			<div ng-show="form.named.$invalid && (form.named.$touched || form.$submitted)">Campo necesario</div>
 		</div>
 		
-		<div class="pure-control-group">
+		<div class="pure-control-group" ng-class="{ 'p-error': form.phone.$invalid && (form.phone.$touched || form.$submitted) }">
 			<label for="phone">Teléfono</label>	
-			<input type="number" name="phone" id="phone" ng-model="contact.phone" placeholder="Phone">
+			<input type="number" name="phone" id="phone" ng-model="contact.phone" placeholder="Phone" required>
+			<div ng-show="form.phone.$invalid && (form.phone.$touched || form.$submitted)">Campo necesario</div>
 		</div>
 		
-		<div class="pure-control-group">
+		<div class="pure-control-group" ng-class="{ 'p-error': form.email.$invalid && (form.email.$touched || form.$submitted) }">
 			<label for="email">E-mail</label>
-			<input type="email" name="email" id="email" ng-model="contact.email" placeholder="E-mail">
+			<input type="email" name="email" id="email" ng-model="contact.email" placeholder="E-mail" required>
+			<div ng-show="form.email.$invalid && (form.email.$touched || form.$submitted)">Campo necesario</div>
 		</div>
 		
 		<div class="pure-control-group">
