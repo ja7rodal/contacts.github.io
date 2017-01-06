@@ -17,7 +17,15 @@ angular.module('app').factory('contactFactory',['$firebaseArray', '$firebaseObje
 			var contact = ref.child(id);
 			return $firebaseObject(contact);
 
-		}
+		},
+		delete: function(id){
+			var contact = $firebaseObject(ref.child(id));
+			contact.$remove().then(function(ref) {
+  			console.info("ELiminado ", ref )
+				}, function(error) {
+  			console.log("Error:", error);
+				});
+		} 
 	};
 
 }]);

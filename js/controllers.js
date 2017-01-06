@@ -1,7 +1,6 @@
 angular.module('app').controller('ContactController', ['$scope', '$location', 'contactFactory', function ($scope, $location, contactFactory) {
 	$scope.contacts = contactFactory.list();
 	
-	$scope.path = "";
 	// mask for phone
 	$scope.phoneMask = "+99-999-9999";
 
@@ -30,19 +29,12 @@ angular.module('app').controller('ContactController', ['$scope', '$location', 'c
 
 angular.module('app').controller('showController', ['$scope', 'contactFactory', '$location', '$routeParams', function ($scope, contactFactory, $location, $routeParams) {
 
-	
-	var contacts = contactFactory.list();
 	$scope.contact = contactFactory.contact($routeParams.id);
 	
-	$scope.delete = function() {
-
-		var d =confirm("Estas seguro de eleminar este contacto?");
-		if (d == true ){ 
-			contacts.$remove($scope.contact);
-			//contacts.$remove(id);
-			$location.path('/');
-			}
-	};
+	$scope.contactDel = function() {
+		contactFactory.delete($routeParams.id);
+		$location.path('/');
+		};
 
 }]);
 
