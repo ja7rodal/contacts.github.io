@@ -1,0 +1,30 @@
+<h1 class="title">Editar contacto</h1>
+<form class="pure-form pure-form-aligned" name="name" ng-submit="editContact()" novalidate>
+	<fieldset>
+		<div class="pure-control-group">
+			<label for="named">Nombres</label>
+			<input type="text" name="named" ng-model="contact.name" placeholder="Nombre.." >
+		</div>
+		
+		<div class="pure-control-group">
+			<label for="phone">Teléfono</label>	
+			<input type="number" name="phone" id="phone" ng-model="contact.phone" placeholder="Phone">
+		</div>
+		
+		<div class="pure-control-group">
+			<label for="email">E-mail</label>
+			<input type="email" name="email" id="email" ng-model="contact.email" placeholder="E-mail">
+		</div>
+		
+		<div class="pure-control-group">
+			<label for="notes">Notas</label>
+			<textarea name="notes" name="notes" id="notes" cols="30" rows="10" ng-model="contact.notes" placeholder="Notas..."></textarea>
+		</div>
+
+		<div class="pure-control-group button">
+			<a href="/" class="pure-button "><i class="fa fa-angle-left" aria-hidden="true"></i> Back</a>
+			<button type="submit" class="pure-button button-primary pure-input-1-2">Editar</button>
+		</div>	
+
+	</fieldset>
+</form>
