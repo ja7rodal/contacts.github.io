@@ -73,3 +73,8 @@ td:hover div span{
 	font-weight: bolder;
 }
 
+input[type=text][disabled], input[type=email][disabled], input[type=number][disabled], textarea[disabled] {
+	background-color: white !important;
+	color: darkmagenta !important;
+	cursor: default;
+}

@@ -12,6 +12,10 @@ app.config(function($routeProvider){
         templateUrl: "partial/showContact.html",
 				controller: "showController"
     })
+		.when('/edit/:id', {
+        templateUrl: "partial/editContact.html",
+				controller: "editController"
+    })
         .otherwise({
         redirectTo: '/'
     });

@@ -1,7 +1,14 @@
-<h1>Show contact</h1>
-<div>{{contact.name}}</div>
-<div>{{contact.email}}</div>
-<div>{{contact.notes}}</div>
-<div>{{contact.phone}}</div>
+<h1 class="title">{{contact.name}}</h1>
+<div class= "mail">
+	<span class=""><i class="fa fa-phone" aria-hidden="true"></i> {{contact.phone}}</span>
+	<span class="ph"><i class="fa fa-envelope" aria-hidden="true"></i> {{contact.email}}</span>
+	<h3>Notes:</h3>
+	<div>{{contact.notes}}</div>
 
+</div>
 
+<div class="pure-control-group button">
+	<a href="#/" class="pure-button "><i class="fa fa-angle-left" aria-hidden="true"></i> Back</a>
+	<a ng-href="#/edit/{{id}}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+	<button ng-href="#/"  ng-click="delete()">x</button>
+</div>	
