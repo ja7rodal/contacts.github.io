@@ -1,0 +1,33 @@
+<h1 class="title">Editar contacto</h1>
+<form class="pure-form pure-form-stacked" name="form" ng-submit="form.$valid && editContact()" novalidate>
+	<fieldset>
+		<div class="pure-control-group" ng-class="{ 'p-error': form.named.$invalid && (form.named.$touched || form.$submitted) }">
+			<label for="named">Nombres</label>
+			<input type="text" name="named" ng-model="contact.name" placeholder="Nombre.." required >
+			<div ng-show="form.named.$invalid && (form.named.$touched || form.$submitted)">Campo necesario</div>
+		</div>
+		
+		<div class="pure-control-group" ng-class="{ 'p-error': form.phone.$invalid && (form.phone.$touched || form.$submitted) }">
+			<label for="phone">Teléfono</label>	
+			<input type="phone" name="phone" id="phone" ng-model="contact.phone" ui-mask="{{phoneMask}}" required>
+			<div ng-show="form.phone.$invalid && (form.phone.$touched || form.$submitted)">Campo necesario</div>
+		</div>
+		
+		<div class="pure-control-group" ng-class="{ 'p-error': form.email.$invalid && (form.email.$touched || form.$submitted) }">
+			<label for="email">E-mail</label>
+			<input type="email" name="email" id="email" ng-model="contact.email" placeholder="E-mail" required>
+			<div ng-show="form.email.$invalid && (form.email.$touched || form.$submitted)">Campo necesario</div>
+		</div>
+		
+		<div class="pure-control-group">
+			<label for="notes">Notas</label>
+			<textarea name="notes" name="notes" id="notes" cols="30" rows="10" ng-model="contact.notes" placeholder="Notas..."></textarea>
+		</div>
+
+		<div class="pure-control-group button">
+			<a ng-href="#/contact/{{contact.$id}}" class="pure-button "><i class="fa fa-angle-left" aria-hidden="true"></i> Back</a>
+			<button type="submit" class="pure-button button-primary pure-input-1-2"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Editar</button>
+		</div>	
+
+	</fieldset>
+</form>

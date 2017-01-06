@@ -1,19 +1,19 @@
 app.config(function($routeProvider){
     $routeProvider
         .when('/', {
-        templateUrl: "partial/list.html",
+        templateUrl: "views/listContact.html",
 				controller: "ContactController"
     })
         .when('/new', {
-        templateUrl: "partial/newContact.html",
+        templateUrl: "views/newContact.html",
 				controller: "addController"
     })
         .when('/contact/:id', {
-        templateUrl: "partial/showContact.html",
+        templateUrl: "views/showContact.html",
 				controller: "showController"
     })
 		.when('/edit/:id', {
-        templateUrl: "partial/editContact.html",
+        templateUrl: "views/editContact.html",
 				controller: "editController"
     })
         .otherwise({
