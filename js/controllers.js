@@ -69,8 +69,8 @@ angular.module('app').controller('editController', ['$scope', '$firebaseArray', 
 	});
 
 	$scope.editContact = function (){
-		//$scope.contact.name.$save(id);
-		alert($scope.contact.name);
+		contacts.$save($scope.contact);
+		$location.path("/contact/"+id);
 	};
 
 }]);

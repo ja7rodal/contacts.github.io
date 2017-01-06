@@ -22,7 +22,7 @@ body {
 
 .nuevo a{
 	text-decoration: none;
-	background-color: darkmagenta;
+	background-color: forestgreen;
 	color: white;
 	padding: 5px 10px;
 	border-radius: 10%;
@@ -65,12 +65,24 @@ td:hover div span{
 	margin-top: 20px;
 }
 
-.button-primary {
+.button-primary, .button-warning , .button-error {
 	color: aliceblue;
 	border-radius: 4px;
 	text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
-	background: darkmagenta; /* this is a green */
+	
 	font-weight: bolder;
+}
+
+.button-primary{
+	background: darkmagenta; /* this is a green */
+}
+
+.button-warning {
+    background-color: coral;  /* this is an orange */
+}
+
+.button-error {
+	background-color: crimson;
 }
 
 input[type=text][disabled], input[type=email][disabled], input[type=number][disabled], textarea[disabled] {
