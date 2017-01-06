@@ -43,15 +43,12 @@ angular.module('app').controller('editController', ['$scope', 'contactFactory', 
 	var id = $routeParams.id;
 	
 	var contacts = contactFactory.list();
+	$scope.contact = contactFactory.contact($routeParams.id);
 
-	contacts.$loaded()
-		.then(function (contacts) 
-					{  
-		$scope.contact = contacts.$getRecord(id); 
-	});
 
 	$scope.editContact = function (){
-		contacts.$save($scope.contact);
+		//contacts.$save($scope.contact);
+		contactFactory.edit($scope.contact);
 		$location.path("/contact/"+id);
 	};
 

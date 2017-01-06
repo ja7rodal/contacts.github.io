@@ -8,10 +8,11 @@ angular.module('app').factory('contactFactory',['$firebaseArray', '$firebaseObje
 	};
 	firebase.initializeApp(config);
 	var ref = firebase.database().ref("contacts");
+	var contacts = $firebaseArray(ref);
 
 	return {
 		list: function() {
-		    return $firebaseArray(ref);
+		    return contacts;
     },
 		contact: function(id){
 			var contact = ref.child(id);
@@ -21,16 +22,20 @@ angular.module('app').factory('contactFactory',['$firebaseArray', '$firebaseObje
 		delete: function(id){
 			var contact = $firebaseObject(ref.child(id));
 			contact.$remove().then(function(ref) {
-  			console.info("ELiminado ", ref )
+  			return true;
 				}, function(error) {
-  			console.log("Error:", error);
+  			return error;
 				});
-		} 
+		},
+		edit: function (contact){
+			contact.$save().then(function(ref){
+				return true;
+			}, function(error) {
+  			return error;
+		  });
+		}
 	};
 
 }]);
 
-	
-//	playersRef.orderByChild("name").equalTo("John").on("child_added", function(data) {
-//   console.log("Equal to filter: " + data.val().name);
-//});
+
