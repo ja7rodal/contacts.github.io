@@ -6,7 +6,7 @@ app.config(function($routeProvider){
     })
         .when('/new', {
         templateUrl: "partial/newContact.html",
-				controller: "ContactController"
+				controller: "addController"
     })
         .when('/contact/:id', {
         templateUrl: "partial/showContact.html",

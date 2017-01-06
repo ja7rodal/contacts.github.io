@@ -1,75 +1,50 @@
-angular.module('app').controller('ContactController', ['$scope', '$location', '$firebaseArray', function ($scope, $location, $firebaseArray) {
-	var ref = firebase.database().ref("contacts").orderByChild('name');
-	// create a synchronized array
-	$scope.contacts = $firebaseArray(ref);
+app.controller('ContactController', ['$scope', '$location', 'contactFactory', function ($scope, $location, contactFactory) {
+	$scope.contacts = contactFactory.list();
+	
 	// mask for phone
 	$scope.phoneMask = "+99-999-9999";
 
 	//Link to contact
 	$scope.link_contact = function(location){
-		$location.path('/contact/' + location);
+	$location.path('/contact/' + location);
 	};
 
-	$scope.notes = "";
-	// add new items to the array
-	// the message is automatically added to our Firebase database!
+}]);
+
+
+// Controlador para crear nuevos contactos
+//---------------------------------------------
+app.controller('addController', ['$scope', 'contactFactory', '$location', function ($scope, contactFactory, $location){
+	
+	$scope.contact = {};
+
 	$scope.addContact = function () {
-		$scope.contacts.$add({
-			name: $scope.named,
-			phone: $scope.phone,
-			email: $scope.email,
-			notes: $scope.notes
-		});
-		$scope.named = '';
-		$scope.phone = '';
-		$scope.email = '';
-		$scope.notes = '';
+		contactFactory.create($scope.contact);
+		$scope.contact = {};
 		$location.path('/');
 	};
+	
 }]);
 
-angular.module('app').controller('showController', ['$scope', '$firebaseArray', '$location', '$routeParams', function ($scope, $firebaseArray, $location, $routeParams) {
+// Controlador para mostrar o eliminar un contacto
+//------------------------------------------
+app.controller('showController', ['$scope', 'contactFactory', '$location', '$routeParams', function ($scope, contactFactory, $location, $routeParams) {
 
-	var id = $routeParams.id;
-	$scope.id =  id;
-	var refe = firebase.database().ref("contacts");
-	// create a synchronized array
-	var contacts = $firebaseArray(refe);
-
-	$scope.delete = function() {
-
-		var d =confirm("Estas seguro de eleminar este contacto?");
-		if (d == true ){ 
-			contacts.$remove($scope.contact);
-			//contacts.$remove(id);
-			$location.path('/');
-		}};
-
-	contacts.$loaded()
-		.then(function (contacts) 
-					{  
-		$scope.contact = contacts.$getRecord(id); 
-	});
+	$scope.contact = contactFactory.contact($routeParams.id);
+	$scope.contactDel = function() {
+		contactFactory.delete($routeParams.id);
+		$location.path('/');
+		};
 
 }]);
 
-
-angular.module('app').controller('editController', ['$scope', '$firebaseArray', '$location', '$routeParams', function ($scope, $firebaseArray, $location, $routeParams) {
+// Controlador para editar un contacto
+//-----------------------------------------
+app.controller('editController', ['$scope', 'contactFactory', '$location', '$routeParams', function ($scope, contactFactory, $location, $routeParams) {
 	var id = $routeParams.id;
-	$scope.id =  id;
-	var refe = firebase.database().ref("contacts");
-	// create a synchronized array
-	var contacts = $firebaseArray(refe);
-	$scope.contacts = contacts;
-
-	contacts.$loaded()
-		.then(function (contacts) 
-					{  
-		$scope.contact = contacts.$getRecord(id); 
-	});
-
+	$scope.contact = contactFactory.contact(id);
 	$scope.editContact = function (){
-		contacts.$save($scope.contact);
+		contactFactory.edit($scope.contact);
 		$location.path("/contact/"+id);
 	};
 
